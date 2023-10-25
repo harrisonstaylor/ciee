@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import GPS from "./GPS";
+import GPS from "./Components/GPS";
+import Map from "./Components/Map";
 let lat;
 let long;
 function App() {
@@ -21,6 +22,7 @@ function App() {
     <div className="body">
 
         <GPS />
+        <Map />
 
       <div className="topnav">
         <a href="#abt">Map</a>

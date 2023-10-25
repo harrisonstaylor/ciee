@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-function GeolocationExample() {
+function LocationDisplay() {
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
 
@@ -35,4 +35,4 @@ function GeolocationExample() {
     );
 }
 
-export default GeolocationExample;
+export default LocationDisplay;
