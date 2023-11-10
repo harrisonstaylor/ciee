@@ -4,7 +4,7 @@ function Map (){
 
     return (
         <div>
-            <img src = "../../img/praguemap.jpg" className="map"></img>
+            <img src = {require("../img/praguemap.jpg")} className="map"></img>
         </div>
     );
 

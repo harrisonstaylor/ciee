@@ -1,28 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
-import GPS from "./Components/GPS";
 import Map from "./Components/Map";
-let lat;
-let long;
+import Grid from "./Components/Grid";
+
 function App() {
 
 
-    // eslint-disable-next-line no-undef
-    // const [data, setData] = React.useState(null);
-    //
-    // // eslint-disable-next-line no-undef
-    // React.useEffect(() => {
-    //     fetch("/api")
-    //         .then((res) => res.json())
-    //         .then((data) => setData(data.message));
-    // }, []);
 
 
   return (
     <div className="body">
 
-        <GPS />
-        <Map />
+
+        {/*<Map />*/}
+            <Grid />
+
 
       <div className="topnav">
         <a href="#abt">Map</a>

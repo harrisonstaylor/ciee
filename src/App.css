@@ -1,5 +1,9 @@
 .body {
   text-align: center;
+  margin: auto;
+  width: 100%;
+
+  padding: 10px;
 }
 
 
@@ -41,8 +45,17 @@
 
 .map {
   object-fit: contain;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.tile {
+  height: 200px;
+  width: 33.333%;
 
+}
 
 
