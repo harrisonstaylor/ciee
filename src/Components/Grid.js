@@ -91,12 +91,10 @@ function Grid() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log("hi1");
-                const data = await fetch("http://localhost:3000/buttons", {
+                const data = await fetch("http://localhost:3001/buttons", {
                     method: "GET"
                 }).then((res) => res.json());
 
-                console.log("hi2");
 
                 console.log(data);
                 setButtons(data);

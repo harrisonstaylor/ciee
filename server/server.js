@@ -34,7 +34,7 @@ const { MongoClient, ObjectId } = require("mongodb");
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
@@ -47,13 +47,11 @@ const dbName = "NodeTasks";
 
 async function connectAndFetchData() {
     try {
-        console.log("Yippeee");
         await client.connect();
         const db = client.db(dbName);
         const col = db.collection("TaskManager");
 
-        const data = col.find().toArray();
-        console.log(data);
+        const data = await col.find().toArray();
         return data;
     } finally {
         await client.close();
@@ -71,5 +69,7 @@ app.get('/buttons', async (req, res) => {
     }
 });
 
+
+module.exports = app;
 
 
