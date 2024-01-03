@@ -32,15 +32,15 @@
 const express = require('express');
 const { MongoClient, ObjectId } = require("mongodb");
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
 
 // Replace the following with your Atlas connection string
-const url = "mongodb+srv://hst:Vg43IJPOcsc9f38L@nodetasks.thuggr0.mongodb.net/?retryWrites=true&w=majority";
+const url = process.env.ATLAS_URI;
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const dbName = "NodeTasks";

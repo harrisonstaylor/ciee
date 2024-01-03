@@ -2,7 +2,7 @@
 require("dotenv").config();
 const app = require("./server.js");
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // start the Express server
 app.listen(PORT, () => {
