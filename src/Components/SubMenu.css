@@ -15,11 +15,12 @@
 .sub-menu {
     background: #fff;
     padding: 20px;
-    max-width: 600px; /* Adjust the maximum width as needed */
-    max-height: 400px; /* Adjust the maximum height as needed */
+    width: 50%; /* Adjust the maximum width as needed */
+    height: 50%; /* Adjust the maximum height as needed */
     overflow-y: auto; /* Enable vertical scrolling if the content exceeds the height */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
 }
 
 .sub-menu-header {
@@ -40,6 +41,10 @@
     cursor: pointer;
 }
 
+
+
 .sub-menu-content {
     margin-top: 20px;
+    align-items: center;
+    display: inline-grid;
 }

@@ -70,6 +70,33 @@ app.get('/buttons', async (req, res) => {
 });
 
 
+
+
+
+app.post('/new-task', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db(dbName);
+
+        const newTask = {
+            title: req.body.title,
+            date: new Date(),
+            status: 'pending',
+            urgency: req.body.urgency
+        };
+
+        const result = await db.collection('TaskManager').insertOne(newTask);
+
+        await client.close();
+
+        res.status(201).json({ message: 'Task added successfully', taskId: result.insertedId });
+    } catch (error) {
+        console.error('Error adding task:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
 module.exports = app;
 
 
