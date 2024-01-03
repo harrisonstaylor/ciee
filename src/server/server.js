@@ -41,6 +41,7 @@ app.use(express.json());
 
 // Replace the following with your Atlas connection string
 const url = process.env.ATLAS_URI;
+// const url = "mongodb+srv://hst:Vg43IJPOcsc9f38L@nodetasks.thuggr0.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const dbName = "NodeTasks";
