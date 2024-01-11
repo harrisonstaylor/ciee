@@ -77,7 +77,8 @@ function Grid() {
                 <h2>Pending Tasks</h2>
                 {pendingButtons.map((button) => (
                     <HintButton
-                        key={button._id.toString()} // Convert ObjectId to string
+                        key={button.id} // Use the id property
+                        id={button.id}  // Pass the id property
                         text={button.title}
                         dateCreated={button.dateCreated}
                         status={button.status}
@@ -85,6 +86,7 @@ function Grid() {
                         onClick={() => handleButtonClick(button)}
                     />
                 ))}
+
             </div>
 
             <div>
@@ -100,7 +102,8 @@ function Grid() {
                 <h2>Resolved Tasks</h2>
                 {resolvedButtons.map((button) => (
                     <HintButton
-                        key={button._id.toString()} // Convert ObjectId to string
+                        key={button._id===null ? button._id : null}
+                        id = {button._id}
                         text={button.title}
                         dateCreated={button.dateCreated}
                         status={button.status}
