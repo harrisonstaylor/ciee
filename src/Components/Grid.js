@@ -24,7 +24,7 @@ function Grid() {
                 method: "GET",
             }).then((res) => res.json());
 
-            console.log(data);
+
             setButtons(data);
 
             const resolved = data.filter(button => button.status === "resolved");
@@ -43,16 +43,19 @@ function Grid() {
     };
 
     const closeSubMenu = (event) => {
-        console.log('Closing sub menu...');
+
         // Check if the event object exists
         if (event && event.target) {
+            console.log(event.target)
             // Check if the click target is the overlay or the close button
             const isOverlayClick = event.target.classList.contains('sub-menu-overlay');
             const isCloseButtonClick = event.target.classList.contains('sub-menu-close');
             const isResolveButtonClick = event.target.classList.contains('resolve-button');
             const isDeleteButtonClick = event.target.classList.contains('delete-button');
+            const isTrashClick = event.target.classList.contains('trash-pic');
 
-            if (isOverlayClick || isCloseButtonClick || isResolveButtonClick || isDeleteButtonClick) {
+
+            if (isOverlayClick || isCloseButtonClick || isResolveButtonClick || isDeleteButtonClick || isTrashClick) {
 
                 setSubMenuOpen(false);
                 setClickedButton(null);

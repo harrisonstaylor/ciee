@@ -17,6 +17,7 @@ const NewMenu = ({ onClose, updateGridData  }) => {
     const handleSubmit = async () => {
 
         if (newTaskTitle.length>0) {
+            console.log("starting new task");
             try {
                 const response = await fetch('http://localhost:3001/new-task', {
                     method: 'POST',

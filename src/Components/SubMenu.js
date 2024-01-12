@@ -7,39 +7,40 @@ const SubMenu = ({ onClose, buttonData, updateGridData }) => {
 
     const resolve = async () => {
         const taskId = buttonData.id;
-        console.log(taskId);
-        try {
-            const response = await fetch('http://localhost:3001/resolve-task', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ taskId }),
-            });
+        console.log("started to resolve");
 
+        await fetch('http://localhost:3001/resolve-task', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ taskId }),
+        })
+            .then(response => {
+                console.log("entering then");
             if (response.ok) {
                 setIsResolved(true);
-                await updateGridData(); // Await the updateGridData function
+                console.log("Success resolving");
+                updateGridData(); // Await the updateGridData function
                 console.log("closing");
                 onClose();
             } else {
                 console.error('Failed to resolve task');
-            }
-        } catch (error) {
-            console.error('Error resolving task:', error);
-        }
+        }})
+            .catch(error => console.error('Error resolving task:', error));
 
 
-        updateGridData();
+
     };
 
 
 
 
 
-    const deleteTask = () => {
+    const deleteTask = async () => {
         const taskId = buttonData.id;
-        fetch(`http://localhost:3001/delete-task/${taskId}`, {
+        console.log("starting delete");
+        await fetch(`http://localhost:3001/delete-task/${taskId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +58,6 @@ const SubMenu = ({ onClose, buttonData, updateGridData }) => {
             .catch(error => console.error('Error deleting task:', error));
 
 
-        updateGridData();
     };
 
 
@@ -81,14 +81,14 @@ const SubMenu = ({ onClose, buttonData, updateGridData }) => {
                 </div>
                 <div>
                     {buttonData.status === "pending" && (
-                        <button onClick={(event) => resolve()}>
+                        <button className="resolve-button" onClick={(event) => resolve()}>
                             {isResolved ? 'Resolved' : 'Resolve'}
                         </button>
 
                     )}
                 </div>
                 <button className="delete-button" onClick={deleteTask}>
-                    <img src="../img/trash.png" alt="Delete" />
+                    <img className="trash-pic" src="../img/trash.png" alt="Delete" />
                 </button>
             </div>
         </div>

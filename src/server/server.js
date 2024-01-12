@@ -41,6 +41,7 @@ app.post('/new-task', async (req, res) => {
     try {
         await client.connect();
         const db = client.db(dbName);
+        console.log("Making new task");
 
         const newTask = {
             title: req.body.title,
@@ -83,7 +84,6 @@ app.post('/resolve-task', async (req, res) => {
 
 
 app.delete('/delete-task/:taskId', async (req, res) => {
-    console.log("hi");
     try {
         await client.connect();
 
@@ -98,7 +98,6 @@ app.delete('/delete-task/:taskId', async (req, res) => {
             res.status(404).json({ error: 'Task not found' });
         }
     } catch (error) {
-        console.log("hi");
         console.error('Error deleting task:', error);
         res.status(500).json({ error: 'Internal server error' });
     } finally {
