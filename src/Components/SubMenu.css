@@ -48,3 +48,20 @@
     align-items: center;
     display: inline-grid;
 }
+
+
+.sub-menu-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button img {
+    width: 20px; /* Adjust the size as needed */
+    height: 20px; /* Adjust the size as needed */
+}

@@ -1,5 +1,5 @@
 import './App.css';
-import Map from "./Components/Map";
+
 import Grid from "./Components/Grid";
 
 function App() {
@@ -15,11 +15,11 @@ function App() {
             <Grid />
 
 
-      <div className="topnav">
-        <a href="#abt">Map</a>
-        <a href="#exp">People</a>
-        <a href="#edu">Leaderboard</a>
-      </div>
+      {/*<div className="topnav">*/}
+      {/*  <a href="#abt">Map</a>*/}
+      {/*  <a href="#exp">People</a>*/}
+      {/*  <a href="#edu">Leaderboard</a>*/}
+      {/*</div>*/}
 
 
 

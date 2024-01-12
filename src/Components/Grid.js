@@ -5,6 +5,7 @@ import SubMenu from "./SubMenu";
 import NewMenu from "./NewMenu";
 
 function Grid() {
+    // eslint-disable-next-line
     const [buttons, setButtons] = useState([]);
     const [resolvedButtons, setResolvedButtons] = useState([]);
     const [pendingButtons, setPendingButtons] = useState([]);
@@ -42,15 +43,23 @@ function Grid() {
     };
 
     const closeSubMenu = (event) => {
-        // Check if the click target is the overlay or the close button
-        const isOverlayClick = event.target.classList.contains('sub-menu-overlay');
-        const isCloseButtonClick = event.target.classList.contains('sub-menu-close');
+        console.log('Closing sub menu...');
+        // Check if the event object exists
+        if (event && event.target) {
+            // Check if the click target is the overlay or the close button
+            const isOverlayClick = event.target.classList.contains('sub-menu-overlay');
+            const isCloseButtonClick = event.target.classList.contains('sub-menu-close');
+            const isResolveButtonClick = event.target.classList.contains('resolve-button');
+            const isDeleteButtonClick = event.target.classList.contains('delete-button');
 
-        if (isOverlayClick || isCloseButtonClick) {
-            setSubMenuOpen(false);
-            setClickedButton(null);
+            if (isOverlayClick || isCloseButtonClick || isResolveButtonClick || isDeleteButtonClick) {
+
+                setSubMenuOpen(false);
+                setClickedButton(null);
+            }
         }
     };
+
 
 
 
@@ -63,6 +72,7 @@ function Grid() {
 
 
     const updateGridData = async () => {
+        console.log('Updating grid data...');
         await fetchData();
     };
 
@@ -77,8 +87,8 @@ function Grid() {
                 <h2>Pending Tasks</h2>
                 {pendingButtons.map((button) => (
                     <HintButton
-                        key={button.id} // Use the id property
-                        id={button.id}  // Pass the id property
+                        key={button.id}
+                        id={button.id}
                         text={button.title}
                         dateCreated={button.dateCreated}
                         status={button.status}
@@ -102,7 +112,7 @@ function Grid() {
                 <h2>Resolved Tasks</h2>
                 {resolvedButtons.map((button) => (
                     <HintButton
-                        key={button._id===null ? button._id : null}
+                        key={button.id}
                         id = {button._id}
                         text={button.title}
                         dateCreated={button.dateCreated}
@@ -113,7 +123,7 @@ function Grid() {
                 ))}
             </div>
             {isSubMenuOpen && clickedButton && (
-                <SubMenu onClose={(event) => closeSubMenu(event)} buttonData={clickedButton} />
+                <SubMenu onClose={closeSubMenu} buttonData={clickedButton} updateGridData={updateGridData}/>
             )}
         </div>
     );

@@ -23,9 +23,7 @@ async function connectAndFetchData() {
 
         const data = await col.find().toArray();
 
-        //const formattedData = data.map(({ _id, ...rest }) => ({ id: _id.toString(), ...rest }));
-
-        return data;
+        return data.map(({_id, ...rest}) => ({id: _id.toString(), ...rest}));
     } finally {
         await client.close();
     }
@@ -51,14 +49,14 @@ app.post('/new-task', async (req, res) => {
             urgency: req.body.urgency
         };
 
-        const result = await db.collection('TaskManager').insertOne(newTask);
+        await db.collection('TaskManager').insertOne(newTask);
 
         await client.close();
 
-        res.status(201).json({ message: 'Task added successfully', taskId: result.insertedId });
+
     } catch (error) {
         console.error('Error adding task:', error);
-        res.status(500).json({ error: 'Internal server error' });
+
     } finally {
         await client.close();
     }
@@ -69,23 +67,44 @@ app.post('/resolve-task', async (req, res) => {
         await client.connect();
         const db = client.db(dbName);
 
-        const taskId = req.body.taskId; // assuming taskId is sent in the request body
-        const result = await db.collection('TaskManager').updateOne(
-            { _id: new ObjectId(taskId) }, // Use new ObjectId()
+        const taskId = req.body.taskId;
+        // eslint-disable-next-line no-unused-vars
+        await db.collection('TaskManager').updateOne(
+            { _id: new ObjectId(taskId) },
             { $set: { status: 'resolved' } }
         );
+    } catch (error) {
+        console.error('Error resolving task:', error);
+    } finally {
+        await client.close();
+    }
+});
 
-        if (result.modifiedCount === 1) {
-            res.status(200).json({ message: 'Task resolved successfully' });
+
+
+app.delete('/delete-task/:taskId', async (req, res) => {
+    console.log("hi");
+    try {
+        await client.connect();
+
+        const db = client.db(dbName);
+        const taskId = req.params.taskId;
+
+        const result = await db.collection('TaskManager').deleteOne({ _id: new ObjectId(taskId) });
+
+        if (result.deletedCount === 1) {
+            res.status(200).json({ message: 'Task deleted successfully' });
         } else {
             res.status(404).json({ error: 'Task not found' });
         }
     } catch (error) {
-        console.error('Error resolving task:', error);
+        console.log("hi");
+        console.error('Error deleting task:', error);
         res.status(500).json({ error: 'Internal server error' });
     } finally {
         await client.close();
     }
 });
+
 
 module.exports = app;

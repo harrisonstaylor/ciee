@@ -33,6 +33,7 @@ const NewMenu = ({ onClose, updateGridData  }) => {
                     // Handle success, maybe update state or perform additional actions
                     console.log('Task added successfully');
                     updateGridData();
+                    onClose();
                 } else {
                     // Handle errors
                     console.error('Error adding task:', response.statusText);
@@ -42,6 +43,7 @@ const NewMenu = ({ onClose, updateGridData  }) => {
             }
 
             // Close the NewMenu
+            console.log("closing");
             onClose();
         }
     };
