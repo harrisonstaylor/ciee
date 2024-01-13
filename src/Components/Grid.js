@@ -67,8 +67,18 @@ function Grid() {
 
 
 
-    const toggleNewTaskMenu = () => {
-        setNewMenuOpen(!isNewMenuOpen);
+    const toggleNewTaskMenu = (event) => {
+        if (event && event.target){
+            const isOverlayClick = event.target.classList.contains('sub-menu-overlay');
+            const isCloseButtonClick = event.target.classList.contains('sub-menu-close');
+            const submitButtonClick = event.target.classList.contains('submit-button');
+            const isNewButtonClick = event.target.classList.contains('new-button');
+
+            if (isOverlayClick || isCloseButtonClick || submitButtonClick || isNewButtonClick){
+                setNewMenuOpen(!isNewMenuOpen);
+            }
+
+        }
     };
 
 
@@ -103,7 +113,7 @@ function Grid() {
             </div>
 
             <div>
-                <button onClick={toggleNewTaskMenu}>New task</button>
+                <button className = "new-button" onClick={toggleNewTaskMenu}>New task</button>
             </div>
 
 

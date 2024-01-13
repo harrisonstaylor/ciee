@@ -48,7 +48,7 @@ const NewMenu = ({ onClose, updateGridData  }) => {
     };
 
     return (
-        <div className="sub-menu-overlay">
+        <div className="sub-menu-overlay" onClick={onClose}>
             <div className="sub-menu">
                 <div className="sub-menu-header">
                     <span className="sub-menu-title">{"New Task"}</span>
@@ -76,7 +76,7 @@ const NewMenu = ({ onClose, updateGridData  }) => {
                     />
                     <span>{newTaskUrgency}</span>
 
-                    <button onClick={handleSubmit}>Submit Task</button>
+                    <button className = "submit-button" onClick={handleSubmit}>Submit Task</button>
                 </div>
             </div>
         </div>

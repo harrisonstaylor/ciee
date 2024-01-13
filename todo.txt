@@ -1,0 +1,5 @@
+TODO:
+
+NewMenu close on click side
+Fix date insertion and displaying error
+Make app prettier tee hee
