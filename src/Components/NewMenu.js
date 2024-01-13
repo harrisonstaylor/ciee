@@ -29,6 +29,7 @@ const NewMenu = ({ onClose, updateGridData  }) => {
                         urgency: newTaskUrgency,
                     }),
                 });
+                console.log(response.ok);
 
                 if (response.ok) {
                     // Handle success, maybe update state or perform additional actions
@@ -43,9 +44,6 @@ const NewMenu = ({ onClose, updateGridData  }) => {
                 console.error('Error adding task 2:', error);
             }
 
-            // Close the NewMenu
-            console.log("closing");
-            onClose();
         }
     };
 

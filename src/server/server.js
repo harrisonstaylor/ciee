@@ -50,9 +50,14 @@ app.post('/new-task', async (req, res) => {
             urgency: req.body.urgency
         };
 
-        await db.collection('TaskManager').insertOne(newTask);
+        const result = await db.collection('TaskManager').insertOne(newTask);
 
-        await client.close();
+        if (result.insertedId != null) {
+            res.status(200).json({ message: 'Task inserted successfully' });
+        } else {
+            res.status(404).json({ error: 'Task insertion error' });
+        }
+
 
 
     } catch (error) {
@@ -70,10 +75,17 @@ app.post('/resolve-task', async (req, res) => {
 
         const taskId = req.body.taskId;
         // eslint-disable-next-line no-unused-vars
-        await db.collection('TaskManager').updateOne(
+        const result = await db.collection('TaskManager').updateOne(
             { _id: new ObjectId(taskId) },
             { $set: { status: 'resolved' } }
         );
+
+
+        if (result.modifiedCount === 1) {
+            res.status(200).json({ message: 'Task resolved successfully' });
+        } else {
+            res.status(404).json({ error: 'Task not found' });
+        }
     } catch (error) {
         console.error('Error resolving task:', error);
     } finally {
