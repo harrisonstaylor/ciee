@@ -41,7 +41,6 @@ app.post('/new-task', async (req, res) => {
     try {
         await client.connect();
         const db = client.db(dbName);
-        console.log("Making new task");
 
         const newTask = {
             title: req.body.title,

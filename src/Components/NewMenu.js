@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import './SubMenu.css'; // Import the corresponding CSS file
 
+
 const NewMenu = ({ onClose, updateGridData  }) => {
     const [newTaskTitle, setNewTaskTitle] = useState('');
     const [newTaskUrgency, setNewTaskUrgency] = useState(1); // Default urgency value
@@ -64,6 +65,7 @@ const NewMenu = ({ onClose, updateGridData  }) => {
                         value={newTaskTitle}
                         onChange={handleTitleChange}
                     />
+                    <div style={{ marginBottom: 20}}/>
 
                     <label htmlFor="urgency">Urgency:</label>
                     <input
@@ -75,6 +77,7 @@ const NewMenu = ({ onClose, updateGridData  }) => {
                         onChange={handleUrgencyChange}
                     />
                     <span>{newTaskUrgency}</span>
+                    <div style={{ marginBottom: 20}}/>
 
                     <button className = "submit-button" onClick={handleSubmit}>Submit Task</button>
                 </div>
