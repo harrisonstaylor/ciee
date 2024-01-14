@@ -1,11 +1,11 @@
 // NewMenu.js
 import React, { useState } from "react";
-import './SubMenu.css'; // Import the corresponding CSS file
+import './SubMenu.css';
 
 
 const NewMenu = ({ onClose, updateGridData  }) => {
     const [newTaskTitle, setNewTaskTitle] = useState('');
-    const [newTaskUrgency, setNewTaskUrgency] = useState(1); // Default urgency value
+    const [newTaskUrgency, setNewTaskUrgency] = useState(1);
 
     const handleTitleChange = (event) => {
         setNewTaskTitle(event.target.value);
@@ -33,12 +33,9 @@ const NewMenu = ({ onClose, updateGridData  }) => {
                 console.log(response.ok);
 
                 if (response.ok) {
-                    // Handle success, maybe update state or perform additional actions
-                    console.log('Task added successfully');
                     updateGridData();
                     onClose();
                 } else {
-                    // Handle errors
                     console.error('Error adding task:', response.statusText);
                 }
             } catch (error) {

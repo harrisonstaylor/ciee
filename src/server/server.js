@@ -9,7 +9,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Replace the following with your Atlas connection string
 const url = process.env.ATLAS_URI;
 const client = new MongoClient(url);
 
@@ -73,7 +72,6 @@ app.post('/resolve-task', async (req, res) => {
         const db = client.db(dbName);
 
         const taskId = req.body.taskId;
-        // eslint-disable-next-line no-unused-vars
         const result = await db.collection('TaskManager').updateOne(
             { _id: new ObjectId(taskId) },
             { $set: { status: 'resolved' } }

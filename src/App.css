@@ -46,10 +46,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px; /* Adjust the height as needed */
-  width: 75%; /* Set the width to 90% of the container */
-  margin: 0 auto; /* Center the task rows by adding margin */
-  border-bottom: 1px solid #ddd; /* Add a border between rows for separation */
+  height: 80px;
+  width: 75%;
+  margin: 0 auto;
+  border-bottom: 1px solid #ddd;
 }
 
 
@@ -57,7 +57,7 @@
 .task-date,
 .task-urgency {
   flex: 1;
-  padding: 0 15px; /* Increase padding for more spacing */
+  padding: 0 15px;
 }
 
 
@@ -67,16 +67,16 @@
 
 
 .task-date {
-  text-align: center; /* Align the date to the right */
+  text-align: center;
 }
 
 .task-urgency {
   display: flex;
-  align-items: center; /* Align items vertically */
+  align-items: center;
 }
 
 .star-image {
-  height: auto; /* Maintain aspect ratio */
+  height: auto;
 }
 
 .header-row {
@@ -91,19 +91,19 @@ body {
 
 
 .task-urgency img {
-  width: 20px; /* Adjust the width as needed */
-  height: 20px; /* Adjust the height as needed */
-  margin-right: 2px; /* Adjust spacing between stars */
+  width: 20px;
+  height: 20px;
+  margin-right: 2px;
 }
 
 
 
 
 .add-button {
-  width: 30px; /* Adjust the width as needed */
-  height: auto; /* Maintain aspect ratio */
-  background: none; /* Remove background */
-  border: none; /* Remove border */
+  width: 30px;
+  height: auto;
+  background: none;
+  border: none;
 }
 
 

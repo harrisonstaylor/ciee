@@ -1,5 +1,5 @@
 // SubMenu.js
-import './SubMenu.css'; // Import the corresponding CSS file
+import './SubMenu.css';
 import trashImg from '../img/trash.png';
 import { format } from 'date-fns';
 import starImage1 from "../img/star1.png";

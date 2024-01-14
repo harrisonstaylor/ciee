@@ -98,22 +98,22 @@ function Grid() {
 
     const toggleSortOrderTitlePend = () => {
         setSortOrderTitlePend(sortOrderTitlePend === 'asc' ? 'desc' : 'asc');
-        setSortOrderDatePend(null); // Reset date sort order
-        setSortOrderUrgPend(null); // Reset urgency sort order
+        setSortOrderDatePend(null);
+        setSortOrderUrgPend(null);
         setLastSelectedColumn('title');
     };
 
     const toggleSortOrderDatePend = () => {
         setSortOrderDatePend(sortOrderDatePend === 'asc' ? 'desc' : 'asc');
-        setSortOrderTitlePend(null); // Reset title sort order
-        setSortOrderUrgPend(null); // Reset urgency sort order
+        setSortOrderTitlePend(null);
+        setSortOrderUrgPend(null);
         setLastSelectedColumn('date');
     };
 
     const toggleSortOrderPend = () => {
         setSortOrderUrgPend(sortOrderUrgPend === 'asc' ? 'desc' : 'asc');
-        setSortOrderTitlePend(null); // Reset title sort order
-        setSortOrderDatePend(null); // Reset date sort order
+        setSortOrderTitlePend(null);
+        setSortOrderDatePend(null);
         setLastSelectedColumn('urgency');
     };
 
@@ -121,7 +121,6 @@ function Grid() {
 
 
 
-    // Function to sort buttons based on urgency
     const sortButtonsUrgPend = (buttons) => {
         if (sortOrderUrgPend!=null) {
             return buttons.slice().sort((a, b) => {
