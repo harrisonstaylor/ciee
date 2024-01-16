@@ -2,3 +2,4 @@ TODO:
 
 Fix date insertion and displaying error
 Make app prettier tee hee
+Calendar feature
